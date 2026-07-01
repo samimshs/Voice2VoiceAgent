@@ -1,0 +1,32 @@
+# ── Utilities ────────────────────────────────────────────────────────────────
+python-dotenv
+
+# ── Phase 1 — Data acquisition & cleaning ────────────────────────────────────
+pandas
+pyarrow
+kaggle==1.6.17          # pinned: 1.6.18+ breaks on Python 3.13
+jupyter
+
+# ── Phase 2 — Embeddings & vector store ──────────────────────────────────────
+openai                  # also covers Whisper API (Phase 5) and TTS API (Phase 6)
+chromadb
+
+# ── Phase 3 — MCP server ─────────────────────────────────────────────────────
+mcp
+cachetools
+requests
+tavily-python
+
+# ── Phase 4 — LangGraph multi-agent orchestration ────────────────────────────
+langchain
+langchain-openai
+langgraph
+# langchain-anthropic     # uncomment to use Claude instead of GPT
+# langchain-google-genai  # uncomment to use Gemini instead of GPT
+
+# ── Phase 5 — ASR (uses OpenAI Whisper API — no local model needed) ──────────
+sounddevice             # microphone recording (terminal mode)
+soundfile               # save recorded audio to WAV
+
+# ── Phase 7 — UI ─────────────────────────────────────────────────────────────
+streamlit

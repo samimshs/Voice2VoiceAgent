@@ -1,0 +1,34 @@
+# Secrets — never commit these
+.env
+
+# Virtual environment
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Raw source CSV is large and not needed — cleaned parquet is committed instead
+data/raw/*
+!data/raw/.gitkeep
+
+# Processed parquet + ChromaDB index are committed so cloners skip expensive rebuild steps
+# (data/processed/ and data/index/ are intentionally NOT excluded)
+
+# Temporary audio files
+temp/*
+!temp/.gitkeep
+
+# Log files
+logs/*.log
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Kaggle API token
+kaggle.json
+
+# macOS
+.DS_Store
