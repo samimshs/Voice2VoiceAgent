@@ -12,7 +12,7 @@ openai                  # also covers Whisper API (Phase 5) and TTS API (Phase 6
 chromadb
 
 # ── Phase 3 — MCP server ─────────────────────────────────────────────────────
-mcp
+mcp==1.28.1             # pinned: Streamlit Cloud caches installs across deploys; unpinned mcp can leave a stale SDK version whose Server API doesn't have list_tools()
 cachetools
 requests
 tavily-python
