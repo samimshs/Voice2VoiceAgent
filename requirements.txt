@@ -38,3 +38,4 @@ soundfile==0.14.0       # save recorded audio to WAV
 
 # ── Phase 7 — UI ─────────────────────────────────────────────────────────────
 streamlit==1.58.0       # pinned: 1.59.1 resolves a starlette version whose GZipResponder signature changed, crashing every request on Streamlit Cloud
+starlette==1.3.1        # pinned: transitive dep of streamlit/mcp; unpinned it resolves 1.4.0 regardless of the streamlit pin above and reintroduces the same GZipResponder crash
