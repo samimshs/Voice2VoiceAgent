@@ -1,32 +1,40 @@
+# All versions below are pinned to exact, locally-verified-working releases.
+# Streamlit Cloud installs with `uv pip install` and no lock file, so any
+# unpinned package here can silently resolve to a newer, incompatible release
+# on redeploy and crash the app in production while it keeps working locally.
+# This has already happened twice (mcp, then streamlit/starlette) — when
+# bumping a version on purpose, verify `./run.sh app` still starts cleanly
+# before pushing, and update the pin here rather than removing it.
+
 # ── Utilities ────────────────────────────────────────────────────────────────
-python-dotenv
+python-dotenv==1.2.2
 
 # ── Phase 1 — Data acquisition & cleaning ────────────────────────────────────
-pandas
-pyarrow
+pandas==3.0.3
+pyarrow==24.0.0
 kaggle==1.6.17          # pinned: 1.6.18+ breaks on Python 3.13
-jupyter
+jupyter==1.1.1
 
 # ── Phase 2 — Embeddings & vector store ──────────────────────────────────────
-openai                  # also covers Whisper API (Phase 5) and TTS API (Phase 6)
-chromadb
+openai==2.44.0          # also covers Whisper API (Phase 5) and TTS API (Phase 6)
+chromadb==1.5.9
 
 # ── Phase 3 — MCP server ─────────────────────────────────────────────────────
 mcp==1.28.1             # pinned: Streamlit Cloud caches installs across deploys; unpinned mcp can leave a stale SDK version whose Server API doesn't have list_tools()
-cachetools
-requests
-tavily-python
+cachetools==7.1.4
+requests==2.34.2
+tavily-python==0.7.26
 
 # ── Phase 4 — LangGraph multi-agent orchestration ────────────────────────────
-langchain
-langchain-openai
-langgraph
+langchain==1.3.11
+langchain-openai==1.3.3
+langgraph==1.2.7
 # langchain-anthropic     # uncomment to use Claude instead of GPT
 # langchain-google-genai  # uncomment to use Gemini instead of GPT
 
 # ── Phase 5 — ASR (uses OpenAI Whisper API — no local model needed) ──────────
-sounddevice             # microphone recording (terminal mode)
-soundfile               # save recorded audio to WAV
+sounddevice==0.5.5      # microphone recording (terminal mode)
+soundfile==0.14.0       # save recorded audio to WAV
 
 # ── Phase 7 — UI ─────────────────────────────────────────────────────────────
 streamlit==1.58.0       # pinned: 1.59.1 resolves a starlette version whose GZipResponder signature changed, crashing every request on Streamlit Cloud
